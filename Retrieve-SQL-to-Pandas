@@ -1,0 +1,16 @@
+import mysql.connector
+import pandas as pd
+
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="5209",
+  database="weather"
+)
+
+df = pd.read_sql('SELECT * FROM weather_state', con=mydb)
+print(df)
+
+
+mydb.close()
