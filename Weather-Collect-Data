@@ -1,0 +1,90 @@
+from bs4 import BeautifulSoup as soup
+import requests
+from datetime import datetime
+import mysql.connector
+
+now = datetime.now()
+print(now.strftime("%Y-%m-%d %H:%M:%S"))
+
+sta_list = ['FW0637', 'CW9790', 'FW3748', 'EW6166', 'CW0133', 'W5RZG-10', 'N5UMT-9', 'W5TAA-N', 'W5TAA-9', 'KI5EIH', 'KI5EIH-C', 'W5RZG-9', 'FW7473', 'W5ERX-N', 'EW5349', 'K5JM-7', 'KI5HRI-N', 'CW3468', 'K5JM-9', 'W9ZEB-9', 'KE3D-10', 'KE3D-12', 'EW3675', 'DW7423', 'W5OEM-10', 'K5WWT-N', 'KI5IAZ-9', 'KI5IAZ-7', 'FW4402', 'N5MNW-2', 'KD5TEQ-B', 'KD5TEQ', 'FW7988', 'EW4907', 'N5AMQ-9', 'KF4WSO-7', 'EW3105', 'KG5DRT-7', 'K4RCL-N', 'N4PKR-9', 'W5KA-B', 'W5KA-C', 'W5KA', 'W5KA-A', 'EW3767', 'FW6030', 'EW0214']
+for i in range (len(sta_list)):
+    data_link = 'http://www.findu.com/cgi-bin/wx.cgi?call='+ sta_list[i]
+    data_page = requests.get(data_link)
+    page_soup_data = soup(data_page.text, 'html.parser')
+    data_info = page_soup_data.find_all('tr')
+    try:
+        long_data = (sta_list[i]+ " " + data_info[1].get_text())
+    except:
+
+        
+        continue
+    long_data = long_data.split()
+    db = long_data[0].strip('-')
+    date_long = str(long_data[1])
+    year = str(date_long[2:4])
+    month = str(date_long[4:6])
+    day = str(date_long[6:8])
+    hour = str(date_long[8:10])
+    min = str(date_long[10:12])
+    sec = str(date_long[12:14])
+    date_string = (year + ' ' + month + ' ' + day + ' ' + hour + ' ' + min + " " + sec)
+
+    date_obj = datetime.strptime(date_string, '%y %m %d %H %M %S')
+
+    temp = long_data[2]
+    wind_dir = long_data[3]
+    wind_spd = long_data[4]
+    wind_gust = long_data[5]
+    rain_1 = long_data[6]
+    rain_24 = long_data[7]
+    rain_mn = long_data[8]
+    humid = long_data[9]
+    bar = long_data[10]
+
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="1234",
+        database='weather'
+    )
+    add_weather = ("INSERT INTO weather_state "
+                   "(node, date, temp, wind_dir, wind_speed, wind_gust, rain_1, rain_24, rain_mn, humid, baro) "
+                   "VALUES ( %(node)s ,%(date)s, %(temp)s, %(wind_dir)s, %(wind_speed)s, %(wind_gust)s, %(rain_1)s, %(rain_24)s, %(rain_mn)s, %(humid)s, %(baro)s)")
+
+    data_weather = {
+        'node': db,
+        'date': date_obj,
+        'temp': temp,
+        'wind_dir': wind_dir,
+        'wind_speed': wind_spd,
+        'wind_gust': wind_gust,
+        'rain_1': rain_1,
+        'rain_24': rain_24,
+        'rain_mn': rain_mn,
+        'humid': humid,
+        'baro': bar,
+    }
+
+    cursor = mydb.cursor()
+    cursor.execute(add_weather, data_weather)
+
+    # Make sure data is committed to the database
+    mydb.commit()
+
+    cursor.close()
+    mydb.close()
+
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="1234",
+  database="weather"
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("delete t1 from weather_state t1 inner join weather_state t2 where t1.id < t2.id and t1.date = t2.date AND t1.temp = t2.temp AND t1.baro = t2.baro")
+mydb.commit()
+mycursor.close()
+mydb.close()
