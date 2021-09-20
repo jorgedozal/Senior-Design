@@ -1,0 +1,132 @@
+import tkinter
+from tkinter import *
+from tkinter import ttk
+from PIL import Image, ImageTk
+#import webbrowser
+import requests
+
+
+root = Tk()
+root.geometry('1100x650+200+200')
+
+ttk.Label(root, text=' ', background='black').place(x=0, y=0, width=1100, height=650)
+ttk.Label(root, text='Airogistic GUI', background='orange').place(x=15, y=10, width=80, height=20)
+
+ttk.Label(root, text=' ', background='white').place(x=15, y=50, width=260, height=200)
+ttk.Label(root, text='Approvals', background='white').place(x=285, y=50, width=260, height=200)
+ttk.Label(root, text=' ', background='white').place(x=555, y=50, width=260, height=200)
+ttk.Label(root, text=' ', background='white').place(x=825, y=50, width=260, height=200)
+ttk.Label(root, text='Map', background='green').place(x=15, y=260, width=530, height=375)
+ttk.Label(root, text='Ultimate Decision', background='red').place(x=555, y=260, width=530, height=375)
+
+
+# Create a photoimage object of the image in the path
+image1 = Image.open("wind.jpg")
+test = ImageTk.PhotoImage(image1)
+label1 = tkinter.Label(image=test)
+label1.image = test
+# Position image
+label1.place(x=15, y=50)
+
+image2 = Image.open("rain.jpg")
+test = ImageTk.PhotoImage(image2)
+label2 = tkinter.Label(image=test)
+label2.image = test
+label2.place(x=15, y=100)
+
+image3 = Image.open("air pressure.jpg")
+test = ImageTk.PhotoImage(image3)
+label3 = tkinter.Label(image=test)
+label3.image = test
+label3.place(x=15, y=150)
+
+image4 = Image.open("humidity.jpg")
+test = ImageTk.PhotoImage(image4)
+label4 = tkinter.Label(image=test)
+label4.image = test
+label4.place(x=15, y=200)
+
+image5 = Image.open("rpm.jpg")
+test = ImageTk.PhotoImage(image5)
+label5 = tkinter.Label(image=test)
+label5.image = test
+label5.place(x=555, y=150)
+
+image6 = Image.open("ultrasonic.jpg")
+test = ImageTk.PhotoImage(image6)
+label6 = tkinter.Label(image=test)
+label6.image = test
+label6.place(x=650, y=70)
+
+image7 = Image.open("motor temp.jpg")
+test = ImageTk.PhotoImage(image7)
+label7 = tkinter.Label(image=test)
+label7.image = test
+label7.place(x=730, y=150)
+
+image7 = Image.open("force mount.jpg")
+test = ImageTk.PhotoImage(image7)
+label7 = tkinter.Label(image=test)
+label7.image = test
+label7.place(x=825, y=150)
+
+image7 = Image.open("drone battery.jpg")
+test = ImageTk.PhotoImage(image7)
+label7 = tkinter.Label(image=test)
+label7.image = test
+label7.place(x=825, y=50)
+
+label8 = Label(root, text = 'Wind :')
+#places the label in the following x and y coordinates
+label8.place(x=100, y=60)
+
+label9 = Label(root, text = 'Chance Of Rain :')
+#places the label in the following x and y coordinates
+label9.place(x=100, y=110)
+
+label10 = Label(root, text = 'Air Pressure :')
+#places the label in the following x and y coordinates
+label10.place(x=100, y=160)
+
+label11 = Label(root, text = 'Humidity :')
+#places the label in the following x and y coordinates
+label11.place(x=100, y=210)
+
+label12 = Label(root, text = 'RPM:')
+#places the label in the following x and y coordinates
+label12.place(x=555, y=227)
+
+label13 = Label(root, text = 'Motor Temp:')
+#places the label in the following x and y coordinates
+label13.place(x=730, y=225)
+
+label14 = Label(root, text = 'Ultrasonic:')
+#places the label in the following x and y coordinates
+label14.place(x=650, y=50)
+
+label15 = Label(root, text = 'Force Mount Weight:')
+#places the label in the following x and y coordinates
+label15.place(x=825, y=227)
+
+label16 = Label(root, text = 'Drone Battery Life:')
+#places the label in the following x and y coordinates
+label16.place(x=825, y=125)
+
+
+root.mainloop()
+
+
+
+# ttk.Label(root, text = 'Airogistic', background = 'orange').place(relx = 1.0, x = -5, y = 5, anchor = 'ne')
+# ttk.Label(root, text = 'Blue', background = 'blue').place(relx = 0.5, rely = 0.5, anchor = 'center', relwidth = 0.5, relheight = 0.5) keeps it in middl
+#webbrowser.open('https://www.google.com/maps/@29.8384782,-97.9697664,15z?hl=en&authuser=0')
+#api_key = "i0ehffzypoKpEAeWuqlBHLczRR8="
+#url = "https://maps.googleapis.com/maps/api/staticmap?"
+#location = input("Enter location :")
+#center = location
+#zoom = 10
+#r = requests.get(url +"center="+center+"&zoom="+str(zoom)+"&size=1024x768&key="+api_key)
+#print(url +"center="+center+"&zoom="+str(zoom)+"&size=1024x768&key="+api_key)
+#f = open('E:/Users/Jorge/Desktop/GUI/map.png', 'wb')
+#f.write(r.content)
+#f.close()
