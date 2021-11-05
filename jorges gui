@@ -1,132 +1,166 @@
 import tkinter
 from tkinter import *
 from tkinter import ttk
+from tkinter.font import Font
 from PIL import Image, ImageTk
-#import webbrowser
-import requests
-
 
 root = Tk()
-root.geometry('1100x650+200+200')
+root.geometry('1400x750+200+200') #920x1280
+ttk.Label(root, text=' ', background='black').place(x=0, y=0, width=1400, height=800)
+ttk.Label(root, text='Decision Making Portal', background='orange', font=("Times", 20)).place(x=15, y=10, width=260, height=35)
+ttk.Label(root, text='map', background='green').place(x=15, y=368, width=950, height=372)
 
-ttk.Label(root, text=' ', background='black').place(x=0, y=0, width=1100, height=650)
-ttk.Label(root, text='Airogistic GUI', background='orange').place(x=15, y=10, width=80, height=20)
+ttk.Label(root, text='', background='white').place(x=975, y=368, width=410, height=372)
+ttk.Label(root, text='ULTIMATE DECISION', background='white', font=("Times 20 bold")).place(x=1040, y=390, width=300, height=35)
+image14 = Image.open("stop.jpg")
+test = ImageTk.PhotoImage(image14)
+label26 = tkinter.Label(image=test)
+label26.image = test
+label26.place(x=1060, y=460)
 
-ttk.Label(root, text=' ', background='white').place(x=15, y=50, width=260, height=200)
-ttk.Label(root, text='Approvals', background='white').place(x=285, y=50, width=260, height=200)
-ttk.Label(root, text=' ', background='white').place(x=555, y=50, width=260, height=200)
-ttk.Label(root, text=' ', background='white').place(x=825, y=50, width=260, height=200)
-ttk.Label(root, text='Map', background='green').place(x=15, y=260, width=530, height=375)
-ttk.Label(root, text='Ultimate Decision', background='red').place(x=555, y=260, width=530, height=375)
-
-
+#WeatherBlock1
+# creating white box
+ttk.Label(root, text=' ', background='white').place(x=15, y=50, width=200, height=308)
 # Create a photoimage object of the image in the path
 image1 = Image.open("wind.jpg")
 test = ImageTk.PhotoImage(image1)
 label1 = tkinter.Label(image=test)
 label1.image = test
 # Position image
-label1.place(x=15, y=50)
-
-image2 = Image.open("rain.jpg")
+label1.place(x=15, y=123)
+image2 = Image.open("rain2.jpg")
 test = ImageTk.PhotoImage(image2)
-label2 = tkinter.Label(image=test)
+label2 = tkinter.Label(image=test,highlightthickness=0)
 label2.image = test
-label2.place(x=15, y=100)
+label2.place(x=15, y=190)
+label3 = Label(root, text = 'Wind :',background='white', font=("Times", 15), borderwidth=0)
+label3.place(x=15, y=160)
+label4 = Label(root, text = 'Rain :',background='white', font=("Times", 15))
+label4.place(x=15, y=245)
+label5 = Label(root, text = 'Temperature :',background='white', font=("Times", 15))
+label5.place(x=15, y=330)
 
-image3 = Image.open("air pressure.jpg")
-test = ImageTk.PhotoImage(image3)
-label3 = tkinter.Label(image=test)
-label3.image = test
-label3.place(x=15, y=150)
 
-image4 = Image.open("humidity.jpg")
-test = ImageTk.PhotoImage(image4)
-label4 = tkinter.Label(image=test)
-label4.image = test
-label4.place(x=15, y=200)
+#WeatherBlock2
+ttk.Label(root, text=' ', background='white').place(x=225, y=50, width=200, height=308)
+image3 = Image.open("wind.jpg")
+test = ImageTk.PhotoImage(image1)
+label6 = tkinter.Label(image=test)
+label6.image = test
+label6.place(x=225, y=123)
+image3 = Image.open("rain2.jpg")
+test = ImageTk.PhotoImage(image2)
+label7 = tkinter.Label(image=test)
+label7.image = test
+label7.place(x=225, y=190)
+label8 = Label(root, text = 'Wind :',background='white', font=("Times", 15))
+label8.place(x=225, y=160)
+label9 = Label(root, text = 'Rain :',background='white', font=("Times", 15))
+label9.place(x=225, y=245)
+label10 = Label(root, text = 'Temperature :',background='white', font=("Times", 15))
+label10.place(x=225, y=330)
+image50 = Image.open("temp.jpg")
+test = ImageTk.PhotoImage(image50)
+label50 = tkinter.Label(image=test)
+label50.image = test
+label50.place(x=225, y=270)
+test = ImageTk.PhotoImage(image50)
+label51 = tkinter.Label(image=test)
+label51.image = test
+label51.place(x=15, y=270)
 
-image5 = Image.open("rpm.jpg")
-test = ImageTk.PhotoImage(image5)
-label5 = tkinter.Label(image=test)
-label5.image = test
-label5.place(x=555, y=150)
+#WeatherBlock3
+ttk.Label(root, text=' ', background='white').place(x=435, y=50, width=200, height=308)
+image10 = Image.open("wind.jpg")
+test = ImageTk.PhotoImage(image1)
+label20 = tkinter.Label(image=test)
+label20.image = test
+label20.place(x=435, y=123)
+image11 = Image.open("rain2.jpg")
+test = ImageTk.PhotoImage(image2)
+label21 = tkinter.Label(image=test)
+label21.image = test
+label21.place(x=435, y=190)
+label22 = Label(root, text = 'Wind :',background='white', font=("Times", 15))
+label22.place(x=435, y=160)
+label23 = Label(root, text = 'Rain :',background='white', font=("Times", 15))
+label23.place(x=435, y=245)
+label24 = Label(root, text = 'Temperature :',background='white', font=("Times", 15))
+label24.place(x=435, y=330)
+test = ImageTk.PhotoImage(image50)
+label52 = tkinter.Label(image=test)
+label52.image = test
+label52.place(x=435, y=270)
 
+#does it check both drone and weather
+ttk.Label(root, text=' ', background='white').place(x=645, y=50, width=320, height=308)
+ttk.Label(root, text='WEATHER CHECK', background='white', font=("Times 20 bold")).place(x=685, y=210, width=260, height=35)
+ttk.Label(root, text='DRONE CHECK', background='white', font=("Times 20 bold")).place(x=700, y=50, width=210, height=35)
+image14 = Image.open("no.jpg")
+test = ImageTk.PhotoImage(image14)
+label26 = tkinter.Label(image=test)
+label26.image = test
+label26.place(x=755, y=95)
+image15 = Image.open("greencheck.jpg")
+test = ImageTk.PhotoImage(image15)
+label27 = tkinter.Label(image=test)
+label27.image = test
+label27.place(x=755, y=253)
+
+
+
+#drone diagnostic block#1
+ttk.Label(root, text=' ', background='white').place(x=975, y=50, width=200, height=308)
+ttk.Label(root, text=' ', background='white').place(x=975, y=50, width=400, height=308)
+label14 = Label(root, text = 'Audible Check:',background='white', font=("Times", 15))
+label14.place(x=975, y=125)
 image6 = Image.open("ultrasonic.jpg")
 test = ImageTk.PhotoImage(image6)
 label6 = tkinter.Label(image=test)
 label6.image = test
-label6.place(x=650, y=70)
-
+label6.place(x=975, y=50)
 image7 = Image.open("motor temp.jpg")
 test = ImageTk.PhotoImage(image7)
 label7 = tkinter.Label(image=test)
 label7.image = test
-label7.place(x=730, y=150)
+label7.place(x=975, y=150)
+label13 = Label(root, text = 'Propulsion Check:',background='white', font=("Times", 15))
+label13.place(x=975, y=222)
+image5 = Image.open("rpm.jpg")
+test = ImageTk.PhotoImage(image5)
+label5 = tkinter.Label(image=test)
+label5.image = test
+label5.place(x=975, y=250)
+label12 = Label(root, text = 'RPM Check:',background='white', font=("Times", 15))
+label12.place(x=975, y=328)
+
+
+#drone diagnostics 2
+ttk.Label(root, text=' ', background='white').place(x=1185, y=50, width=200, height=308)
+ttk.Label(root, text='DRONE DIAGONSTICS', background='white', font=("Times 20 bold")).place(x=1070, y=280, width=300, height=35)
+label15 = Label(root, text = 'Weight Lift Check:',background='white', font=("Times", 15))
+label15.place(x=1185, y=222)
+label16 = Label(root, text = 'Drone Battery Check:',background='white', font=("Times", 15))
+label16.place(x=1185, y=125)
 
 image7 = Image.open("force mount.jpg")
 test = ImageTk.PhotoImage(image7)
 label7 = tkinter.Label(image=test)
 label7.image = test
-label7.place(x=825, y=150)
+label7.place(x=1185, y=150)
 
 image7 = Image.open("drone battery.jpg")
 test = ImageTk.PhotoImage(image7)
 label7 = tkinter.Label(image=test)
 label7.image = test
-label7.place(x=825, y=50)
+label7.place(x=1185, y=50)
 
-label8 = Label(root, text = 'Wind :')
-#places the label in the following x and y coordinates
-label8.place(x=100, y=60)
-
-label9 = Label(root, text = 'Chance Of Rain :')
-#places the label in the following x and y coordinates
-label9.place(x=100, y=110)
-
-label10 = Label(root, text = 'Air Pressure :')
-#places the label in the following x and y coordinates
-label10.place(x=100, y=160)
-
-label11 = Label(root, text = 'Humidity :')
-#places the label in the following x and y coordinates
-label11.place(x=100, y=210)
-
-label12 = Label(root, text = 'RPM:')
-#places the label in the following x and y coordinates
-label12.place(x=555, y=227)
-
-label13 = Label(root, text = 'Motor Temp:')
-#places the label in the following x and y coordinates
-label13.place(x=730, y=225)
-
-label14 = Label(root, text = 'Ultrasonic:')
-#places the label in the following x and y coordinates
-label14.place(x=650, y=50)
-
-label15 = Label(root, text = 'Force Mount Weight:')
-#places the label in the following x and y coordinates
-label15.place(x=825, y=227)
-
-label16 = Label(root, text = 'Drone Battery Life:')
-#places the label in the following x and y coordinates
-label16.place(x=825, y=125)
-
+# all weather checks
+ttk.Label(root, text='LAUNCH STATION', background='white', font=("Times 16 bold")).place(x=15, y=50, width=190, height=35)
+ttk.Label(root, text='PATH WEATHER', background='white', font=("Times 16 bold")).place(x=225, y=50, width=180, height=35)
+ttk.Label(root, text='LANDING STATION', background='white', font=("Times 16 bold")).place(x=435, y=50, width=200, height=35)
 
 root.mainloop()
 
 
 
-# ttk.Label(root, text = 'Airogistic', background = 'orange').place(relx = 1.0, x = -5, y = 5, anchor = 'ne')
-# ttk.Label(root, text = 'Blue', background = 'blue').place(relx = 0.5, rely = 0.5, anchor = 'center', relwidth = 0.5, relheight = 0.5) keeps it in middl
-#webbrowser.open('https://www.google.com/maps/@29.8384782,-97.9697664,15z?hl=en&authuser=0')
-#api_key = "i0ehffzypoKpEAeWuqlBHLczRR8="
-#url = "https://maps.googleapis.com/maps/api/staticmap?"
-#location = input("Enter location :")
-#center = location
-#zoom = 10
-#r = requests.get(url +"center="+center+"&zoom="+str(zoom)+"&size=1024x768&key="+api_key)
-#print(url +"center="+center+"&zoom="+str(zoom)+"&size=1024x768&key="+api_key)
-#f = open('E:/Users/Jorge/Desktop/GUI/map.png', 'wb')
-#f.write(r.content)
-#f.close()
